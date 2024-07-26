@@ -1,12 +1,19 @@
-<button id="spin" (click)="spinWheel()">Spin</button>
-<span class="arrow"></span>
-<div class="container" [ngStyle]="{'transform': 'rotate(' + rotation + 'deg)'}">
-  <div class="one">1</div>
-  <div class="two">2</div>
-  <div class="three">3</div>
-  <div class="four">4</div>
-  <div class="five">5</div>
-  <div class="six">6</div>
-  <div class="seven">7</div>
-  <div class="eight">8</div>
-</div>
+<div id="app">
+    <div class="wheel">
+      <div class="inner" [ngStyle]="{'transform': 'rotate(' + deg + 'deg)'}">
+        <div class="slice" *ngFor="let prize of prizes; let i = index">
+          <span class="prize">{{prize}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="wheel-outer"></div>
+    <svg id="svg-dotted" viewBox="0 0 100 100">
+      <circle id="circle-dotted" cx="50" cy="50" r="40" />
+    </svg>
+    <svg id="svg-arrow" xmlns="http://www.w3.org/2000/svg">
+      <path style="fill:#ff2e52; stroke:#012e52; stroke-width:4; stroke-linejoin:round"
+        d="M 81.540414,49.378716 H 121.51935 L 101.4866,69.420346 Z" />
+    </svg>
+    <button (click)="spin()" [disabled]="activeBtn">SPIN</button>
+  </div>
+  

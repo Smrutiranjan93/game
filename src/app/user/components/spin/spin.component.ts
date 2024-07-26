@@ -1,27 +1,41 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-spin',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './spin.component.html',
-  styleUrl: './spin.component.scss'
+  styleUrl: './spin.component.scss',
 })
 export class SpinComponent {
-  rotation = 0;
+  @ViewChild('container') container!: ElementRef<HTMLDivElement>;
+  prizes: number[] = [10, 20000, 50, 5000, 100, 250, 100000, 500, 1000, 2500, 10000, 50000];
+  activeBtn: boolean = false;
+  deg: number = 0;
 
-  spinWheel() {
-    const sections = 8;
-    const sectionDegree = 360 / sections;
-    const minRotation = 360 * 10; // Ensure it spins at least 10 times
-    const maxRotation = 360 * 15; // Up to 15 times
+  spin() {
+    this.activeBtn = true;
+    setTimeout(() => (this.activeBtn = false), 5100);
 
-    // Random rotation ensuring different section
-    const randomDegree = Math.floor(Math.random() * (maxRotation - minRotation + 1)) + minRotation;
-    const extraRotation = Math.floor(Math.random() * sections) * sectionDegree;
+    let spins = Math.floor(Math.random() * 7) + 9; // perform between 9 and 15 spins
+    console.log('spins: ' + spins);
 
-    this.rotation = this.rotation + randomDegree + extraRotation;
+    let wheelAngle = Math.floor(Math.random() * 12) * 30; // set wheel angle rotation
+    console.log('wheelAngle: ' + wheelAngle);
+
+    let sectorAngle = Math.floor(Math.random() * 14) + 1; // set sector angle rotation
+    sectorAngle *= Math.floor(Math.random() * 2) === 1 ? 1 : -1; // between -14deg and +14deg (28deg range of 30deg sector)
+    console.log('sectorAngle: ' + sectorAngle);
+
+    this.deg += 360 * spins + wheelAngle + sectorAngle;
+    (this.container.nativeElement.querySelector('.inner') as HTMLElement).style.transform = `rotate(${this.deg}deg)`;
+
+    setTimeout(() => (this.deg -= sectorAngle), 100); // reset sector angle rotation to avoid angle > +-44deg on next rotation
+
+    let index = Math.floor((this.deg - sectorAngle) / 30) % 12; // get the prize
+    console.log('prize index:' + index);
+    console.log('you will win: ' + this.prizes[index]);
   }
 }
