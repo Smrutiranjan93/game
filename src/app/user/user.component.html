@@ -1,13 +1,21 @@
-<div class="container-scroller">
+<!-- <div class="container-scroller">
     <app-header></app-header>
-    <div class="container-fluid" style="margin-top: 90px;">
+    <div class="container-fluid">
       <app-sidenav></app-sidenav>
       <div class="main-panel">
         <router-outlet></router-outlet>
       </div>
     </div>
     <app-footer></app-footer>
-  </div>
+  </div> -->
 
- 
-  
+<div class="container-scroller">
+  <app-header></app-header>
+  <div class="container-fluid">
+    <app-sidenav></app-sidenav>
+    <div class="main-panel pt-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

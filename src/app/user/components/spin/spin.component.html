@@ -1,4 +1,7 @@
-<div id="app">
+
+<div class="row">
+<div class="col-md-4">
+  <div id="app">
     <div class="wheel">
       <div class="inner" [ngStyle]="{'transform': 'rotate(' + deg + 'deg)'}">
         <div class="slice" *ngFor="let prize of prizes; let i = index">
@@ -17,5 +20,7 @@
     <button (click)="spin()" [disabled]="activeBtn">SPIN</button>
   
     <app-prize-modal [prize]="prize"></app-prize-modal>
-  </div>
-  
+  </div> 
+</div>
+<div class="col-md-6"></div>
+</div>
