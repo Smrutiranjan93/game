@@ -1,26 +1,41 @@
-
-<div class="row">
-<div class="col-md-4">
-  <div id="app">
-    <div class="wheel">
-      <div class="inner" [ngStyle]="{'transform': 'rotate(' + deg + 'deg)'}">
-        <div class="slice" *ngFor="let prize of prizes; let i = index">
-          <span class="prize">{{prize}}</span>
-        </div>
+<div class="wrapper">
+  <div class="container">
+    <div class="wheel-container">
+      <canvas id="wheel" #wheel></canvas>
+      <button id="spin-btn" #spinBtn (click)="spin()">Spin</button>
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjQ4_oYoMnNSnpHI85S62rAZbcQQQbOh5UFA&s"
+        alt="spinner arrow"
+      />
+    </div>
+    <div id="final-value" #finalValue>
+      <p>Click On The Spin Button To Start</p>
+    </div>
+  </div>
+  <div class="dashboard">
+    <div class="card">
+      <div class="card-body">
+        <h5>Total Spins Available</h5>
+        <p>{{ totalSpinsAvailable }}</p>
       </div>
     </div>
-    <div class="wheel-outer"></div>
-    <svg id="svg-dotted" viewBox="0 0 100 100">
-      <circle id="circle-dotted" cx="50" cy="50" r="40" />
-    </svg>
-    <svg id="svg-arrow" xmlns="http://www.w3.org/2000/svg">
-      <path style="fill:#ff2e52; stroke:#012e52; stroke-width:4; stroke-linejoin:round"
-        d="M 81.540414,49.378716 H 121.51935 L 101.4866,69.420346 Z" />
-    </svg>
-    <button (click)="spin()" [disabled]="activeBtn">SPIN</button>
-  
-    <app-prize-modal [prize]="prize"></app-prize-modal>
-  </div> 
-</div>
-<div class="col-md-6"></div>
+    <div class="card">
+      <div class="card-body">
+        <h5>Number of Completed Spins</h5>
+        <p>{{ completedSpins }}</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5>Awarded Money Today</h5>
+        <p>{{ awardedMoneyToday }}</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5>Total Winnings</h5>
+        <p>{{ totalWinnings }}</p>
+      </div>
+    </div>
+  </div>
 </div>
