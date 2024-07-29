@@ -16,14 +16,9 @@ import { HeaderComponent } from '../shared/header/header.component';
 })
 export class UserComponent {
   constructor(public authService: AuthService){}
-  isLoggedIn: boolean = false;
 
 
   ngOnInit() {
-    this.authService.isLoggedIn$.subscribe((loggedIn) => {
-      console.log(loggedIn)
-      this.isLoggedIn = loggedIn;
-      console.log(this.isLoggedIn)
-    });
+  
   }
 }
