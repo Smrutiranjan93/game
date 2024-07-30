@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '',
     component: UserComponent,
     children: [
-      { path: '', redirectTo: 'spin', pathMatch: 'full' },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'spin', component: SpinComponent },
      
