@@ -19,6 +19,9 @@ export class SpinComponent implements AfterViewInit {
   spinBtnRef!: ElementRef<HTMLButtonElement>;
   @ViewChild('finalValue', { static: true })
   finalValueRef!: ElementRef<HTMLDivElement>;
+  @ViewChild('spinSound', { static: true }) spinSoundRef!: ElementRef<HTMLAudioElement>;
+  @ViewChild('winSound', { static: true }) winSoundRef!: ElementRef<HTMLAudioElement>;
+
   totalSpinsAvailable = 10;
   completedSpins = 5;
   awardedMoneyToday = '$100';
@@ -86,6 +89,7 @@ export class SpinComponent implements AfterViewInit {
       if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
         this.finalValueRef.nativeElement.innerHTML = `<p>You Won Rs: ${i.value}</p>`;
         this.spinBtnRef.nativeElement.disabled = false;
+        // this.winSoundRef.nativeElement.play();
         break;
       }
     }
@@ -94,8 +98,9 @@ export class SpinComponent implements AfterViewInit {
   spin() {
     this.spinBtnRef.nativeElement.disabled = true;
     this.finalValueRef.nativeElement.innerHTML = `<p>Good Luck!</p>`;
-    let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
+    this.spinSoundRef.nativeElement.play();
 
+    let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
     let rotationInterval = window.setInterval(() => {
       this.myChart.options.rotation = this.myChart.options.rotation + this.resultValue;
       this.myChart.update();
