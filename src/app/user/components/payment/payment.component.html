@@ -1,165 +1,201 @@
 <div class="container">
-
-<div class="row  mb-4">
-    <div class="text-center"> <h5 class="fw-bold"> Payment Information</h5>
-       
-    </div>
-    <div class="col-md-5">
-       <div class="card shadow">
-            <div class="card-body">
-                <form>
-                    <div class="row">
-                        <div class="col-md-6 mt-2">
-                            <div class="form-group">
-                                <label class="form-label">First Name</label>
-                                <input class="form-control form-control-sm">
-                            </div>
-                        </div>
-                        <div class="col-md-6 mt-2">
-                            <div class="form-group">
-                                <label class="form-label">Last Name</label>
-                                <input class="form-control form-control-sm">
-                            </div>
-                        </div>
-                        <div class="col-md-6 mt-2">
-                            <div class="form-group">
-                                <label class="form-label">Company Name</label>
-                                <input class="form-control form-control-sm">
-                            </div>
-                        </div>
-                        <div class="col-md-6 mt-2">
-                            <div class="form-group">
-                                <label class="form-label">Phone</label>
-                                <input class="form-control form-control-sm">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-label">Address</label>
-                                <textarea class="form-control" cols="1" rows="1"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mt-2">
-                            <div class="form-group">
-                                <label class="form-label">City</label>
-                                <input class="form-control form-control-sm">
-                            </div>
-                        </div>
-                        <div class="col-md-6 mt-2">
-                            <div class="form-group">
-                                <label class="form-label">Zip Code</label>
-                                <input class="form-control form-control-sm">
-                            </div>
-                        </div>
-                         <div class="col-md-6 mt-2">
-                            <div class="form-group">
-                                <label class="form-label">Country</label>
-                                <select class="form-select form-select-sm">
-                                    <option value="" selected>--Select--</option>
-                                    <option value="India">India</option>
-                                </select>
-                            </div>
-                        </div>
-                         <div class="col-md-6 mt-2">
-                            <div class="form-group">
-                                <label class="form-label">Vat Number</label>
-                                <input class="form-control form-control-sm">
-                            </div>
-                        </div>
-                        <div class="col-md-12 mt-3">
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-                                    <label class="form-check-label" for="inlineRadio1">Credit Card</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Wire Transfer</label>
-                                  </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mt-2">
-                        <div class="form-group">
-                            <label for="cardNumber" class="form-label">
-                                card shadowNumber</label>
-                                <input type="text" class="form-control form-control-sm" id="cardNumber" placeholder="Valid card shadowNumber"/>
-                        </div>
-                        <div class="col-md-12 mt-1">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="form-label">Expiry Date</label>
-                                        <input class="form-control form-control-sm" placeholder="MM">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group mt-2">
-                                        <label class="form-label mt-2"></label>
-                                        <input class="form-control form-control-sm" placeholder="YY">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="form-label">CV Code</label>
-                                        <input class="form-control form-control-sm" placeholder="CVV">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="d-grid gap-2 mt-3">
-                            <button class="btn btn-primary btn-sm">Pay</button>
-                        </div>
-
-                    </div>
-                    
-                </form>
-            </div>
-       </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card shadow">
-            <div class="card-body">
-              <h6 class="fw-bold">Billing Options</h6>
-              <hr/>
-              <h6 class="text-primary fw-bold"><span class="text-dark">Pro Plan</span>(Change Plan)</h6>
-              <div class="border p-2 shadow">
-                 <p class="text-primary fw-bold mt-2">Billed Yearly<span class="text-success">(save 18%)</span></p>
-                 <p>$83/Month <span class="mx-3">$999/Year</span></p>
+  <div class="row mb-4">
+    <div class="text-center"><h5 class="fw-bold">Payment Information</h5></div>
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <h6 class="text-center fw-bold">Billing Address</h6>
+          <form>
+            <div class="row">
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label class="form-label">First Name</label>
+                  <input class="form-control form-control-sm" />
+                </div>
               </div>
-              <div class="border p-2 shadow mt-2">
-                <p class="text-primary fw-bold mt-2">Billed Yearly<span class="text-success">(save 18%)</span></p>
-                <p>$83/Month <span class="mx-3">$999/Year</span></p>
-             </div>
-            </div>
-          </div>
-          <div class="card shadow mt-3">
-            <div class="card-body">
-              <h6 class="fw-bold">Order Summary</h6>
-              <hr/>
-              <div class="row">
-                <div class="col-md-6">
-                  <p>Plan Selected</p>
-                  <p>Billing Option</p>
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label class="form-label">Last Name</label>
+                  <input class="form-control form-control-sm" />
                 </div>
-                <div class="col-md-6">
-                     <p>Pro</p>
-                     <p>Yearly</p>
+              </div>
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label class="form-label">Company Name</label>
+                  <input class="form-control form-control-sm" />
                 </div>
-                <hr/>
-                 <p>Total VAT excl <span class="mx-3">$999</span></p>
-                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-                    <label class="form-check-label" style="font-size: 12px;" for="inlineRadio1">I Accept the Terms & Conditions</label>
+              </div>
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label class="form-label">Phone</label>
+                  <input class="form-control form-control-sm" />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="form-label">Address</label>
+                  <textarea class="form-control" cols="1" rows="1"></textarea>
+                </div>
+              </div>
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label class="form-label">City</label>
+                  <input class="form-control form-control-sm" />
+                </div>
+              </div>
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label class="form-label">Zip Code</label>
+                  <input class="form-control form-control-sm" />
+                </div>
+              </div>
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label class="form-label">Country</label>
+                  <select class="form-select form-select-sm">
+                    <option value="" selected>--Select--</option>
+                    <option value="India">India</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label class="form-label">Vat Number</label>
+                  <input class="form-control form-control-sm" />
+                </div>
+              </div>
+              <div class="col-md-12 mt-3">
+                <div class="form-group">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="inlineRadio1"
+                      value="option1"
+                      checked
+                    />
+                    <label class="form-check-label" for="inlineRadio1"
+                      >Pay with Razorpay</label
+                    >
                   </div>
-                  <div class="d-grid gap-2 mt-3">
-                    <button class="btn btn-primary btn-sm">Purchase Now</button>
-                    <button class="btn btn-primary btn-sm" routerLink="/user/home">Cancel Now</button>
+                 
                 </div>
               </div>
+              <div class="col-md-12 mt-2 d-none">
+                <div class="form-group">
+                  <label for="cardNumber" class="form-label">
+                    card shadowNumber</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    id="cardNumber"
+                    placeholder="Valid card shadowNumber"
+                  />
+                </div>
+                <div class="col-md-12 mt-1">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="form-label">Expiry Date</label>
+                        <input
+                          class="form-control form-control-sm"
+                          placeholder="MM"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group mt-2">
+                        <label class="form-label mt-2"></label>
+                        <input
+                          class="form-control form-control-sm"
+                          placeholder="YY"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="form-label">CV Code</label>
+                        <input
+                          class="form-control form-control-sm"
+                          placeholder="CVV"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-grid gap-2 mt-3">
+                <button class="btn btn-primary btn-sm">Pay</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow">
+        <div class="card-body">
+          <h6 class="fw-bold">Billing Options</h6>
+          <hr />
+          <h6 class="text-primary fw-bold">
+            <span class="text-dark">Pro Plan</span>(Change Plan)
+          </h6>
+          <div class="border p-2 shadow">
+            <p class="text-primary fw-bold mt-2">
+              Billed Yearly<span class="text-success">(save 18%)</span>
+            </p>
+            <p>$83/Month <span class="mx-3">$999/Year</span></p>
+          </div>
+          <div class="border p-2 shadow mt-2">
+            <p class="text-primary fw-bold mt-2">
+              Billed Yearly<span class="text-success">(save 18%)</span>
+            </p>
+            <p>$83/Month <span class="mx-3">$999/Year</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="card shadow mt-3">
+        <div class="card-body">
+          <h6 class="fw-bold">Order Summary</h6>
+          <hr />
+          <div class="row">
+            <div class="col-md-6">
+              <p>Plan Selected</p>
+              <p>Billing Option</p>
+            </div>
+            <div class="col-md-6">
+              <p>Pro</p>
+              <p>Yearly</p>
+            </div>
+            <hr />
+            <p>Total VAT excl <span class="mx-3">$999</span></p>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="option1"
+                checked
+              />
+              <label
+                class="form-check-label"
+                style="font-size: 12px"
+                for="inlineRadio1"
+                >I Accept the Terms & Conditions</label
+              >
+            </div>
+            <div class="d-grid gap-2 mt-3">
+              <button class="btn btn-primary btn-sm">Purchase Now</button>
+              <button class="btn btn-primary btn-sm" routerLink="/user/home">
+                Cancel Now
+              </button>
             </div>
           </div>
+        </div>
+      </div>
     </div>
-   
-</div>
+  </div>
 </div>

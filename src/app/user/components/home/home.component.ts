@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,RouterOutlet,FormsModule,ReactiveFormsModule],
+  imports: [CommonModule,RouterOutlet,FormsModule,ReactiveFormsModule,RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -33,6 +33,6 @@ constructor(private route :Router){}
 
   selectPlan(plan: string): void {
     this.selectedPlan = plan;
-this.route.navigateByUrl('user/payment')
+// this.route.navigateByUrl('user/payment')
   }
 }
