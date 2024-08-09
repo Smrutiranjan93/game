@@ -13,9 +13,14 @@
   <app-header></app-header>
   <div class="container-fluid">
     <app-sidenav></app-sidenav>
-    <div class="main-panel pt-4">
+    <!-- <div class="main-panel pt-4">
       <router-outlet></router-outlet>
-    </div>
+    </div> -->
+    <div class="wrapper">
+      <!-- Main content -->
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
   </div>
   <app-footer></app-footer>
 </div>
