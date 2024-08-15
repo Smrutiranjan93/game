@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -28,8 +29,12 @@ export class HomeComponent {
   setEmailOtp = false;
   verifyForm: FormGroup;
   emailVerifyForm: FormGroup;
-
-  constructor(private fb: FormBuilder,private route: Router) {
+  otpVerifyForm: FormGroup;
+  constructor(
+    private fb: FormBuilder,
+    private route: Router,
+    private auth: AuthService
+  ) {
     this.verifyForm = this.fb.group({
       mobileNumber: [
         '',
@@ -42,6 +47,8 @@ export class HomeComponent {
     });
     this.emailVerifyForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
+    });
+    this.otpVerifyForm = this.fb.group({
       emailOtp1: ['', [Validators.required, Validators.maxLength(1)]],
       emailOtp2: ['', [Validators.required, Validators.maxLength(1)]],
       emailOtp3: ['', [Validators.required, Validators.maxLength(1)]],
@@ -81,15 +88,42 @@ export class HomeComponent {
   }
 
   validateOtp() {
-    const otp = this.verifyForm.value.otp1 + this.verifyForm.value.otp2 + this.verifyForm.value.otp3 + this.verifyForm.value.otp4;
+    const otp =
+      this.verifyForm.value.otp1 +
+      this.verifyForm.value.otp2 +
+      this.verifyForm.value.otp3 +
+      this.verifyForm.value.otp4;
     console.log('OTP entered:', otp);
   }
+
   sendEmailOtp() {
     if (this.emailVerifyForm.controls['email'].valid) {
       this.setEmailOtp = true;
-      
+    }
+    console.log(this.emailVerifyForm.valid);
+    if (this.emailVerifyForm.valid) {
+      const user_id = JSON.parse(localStorage.getItem('user') || '{}').id;
+      const { email, phone } = this.emailVerifyForm.value;
+
+      const otpData = {
+        user_id:user_id,
+        email,
+        phone:'8917288086',
+      };
+      console.log(otpData);
+      this.auth.verifyEmailOtp(otpData).subscribe(
+        (response: any) => {
+          console.log('OTP verification successful:', response);
+
+          // this.router.navigate(['/user']);
+        },
+        (error) => {
+          console.error('OTP verification failed:', error);
+        }
+      );
     }
   }
+
   validateEmailOtp() {
     const otp = [
       this.emailVerifyForm.value.emailOtp1,
@@ -97,6 +131,6 @@ export class HomeComponent {
       this.emailVerifyForm.value.emailOtp3,
       this.emailVerifyForm.value.emailOtp4,
     ].join('');
-    console.log(otp)
+    console.log(otp);
   }
 }

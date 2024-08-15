@@ -58,8 +58,10 @@ export class LoginComponent {
       }
 
       this.auth.login(loginData).subscribe(
-        (response) => {
+        (response:any) => {
           console.log('Login successful:', response);
+          const user = response.result.user;
+          localStorage.setItem('user', JSON.stringify(user));
           this.router.navigate(['/user']);
         },
         (error) => {

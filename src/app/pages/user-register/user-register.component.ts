@@ -26,9 +26,10 @@ export class UserRegisterComponent {
   onSubmit() {
     if (this.registrationForm.valid) {
       const { password, email, phone } = this.registrationForm.value;
+      console.log(this.registrationForm.value)
       try {
         this.auth
-          .login(this.registrationForm.value)
+          .register(this.registrationForm.value)
           .subscribe((response) => {
             console.log('Registration successful', response);
           }, (error) => {
