@@ -30,6 +30,7 @@ export class HomeComponent {
   verifyForm: FormGroup;
   emailVerifyForm: FormGroup;
   otpVerifyForm: FormGroup;
+  packages: any[] = [];
   constructor(
     private fb: FormBuilder,
     private route: Router,
@@ -54,6 +55,10 @@ export class HomeComponent {
       emailOtp3: ['', [Validators.required, Validators.maxLength(1)]],
       emailOtp4: ['', [Validators.required, Validators.maxLength(1)]],
     });
+  }
+
+  ngOnInit() {
+    this.getPackages();
   }
   planDetails: {
     [key: string]: Array<{ feature: string; description: string }>;
@@ -102,13 +107,13 @@ export class HomeComponent {
     }
     console.log(this.emailVerifyForm.valid);
     if (this.emailVerifyForm.valid) {
-      const user_id = JSON.parse(localStorage.getItem('user') || '{}').id;
-      const { email, phone } = this.emailVerifyForm.value;
+      const user_id = JSON.parse(localStorage.getItem('user') || '{}');
+      const { email } = this.emailVerifyForm.value;
 
       const otpData = {
-        user_id:user_id,
+        user_id: user_id.id,
         email,
-        phone:'8917288086',
+        phone: user_id.phone,
       };
       console.log(otpData);
       this.auth.verifyEmailOtp(otpData).subscribe(
@@ -132,5 +137,13 @@ export class HomeComponent {
       this.emailVerifyForm.value.emailOtp4,
     ].join('');
     console.log(otp);
+  }
+
+  getPackages() {
+    this.auth.getPackages().subscribe((res: any) => {
+      console.log(res);
+      this.packages = res.result.list;
+
+    });
   }
 }

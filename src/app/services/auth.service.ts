@@ -64,4 +64,7 @@ export class AuthService {
     }
     return this.httpClient.post(this.PATH_OF_API+'/varifyemailphoneotp',formData)
   }
+  getPackages(){
+    return this.httpClient.post(this.PATH_OF_API+'/packagelist',null)
+  }
 }
