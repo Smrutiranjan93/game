@@ -50,6 +50,20 @@ export class AuthService {
     }
     return this.httpClient.post(this.PATH_OF_API + '/login', formData);
   }
+  sendOtp(obj:any){
+    const formData: any = new FormData();
+
+    if (obj.user_id) {
+      formData.append('user_id', obj.user_id);
+    }
+    if (obj.email) {
+      formData.append('email', obj.email);
+    }
+    if (obj.phone) {
+      formData.append('phone', obj.phone);
+    }
+    return this.httpClient.post(this.PATH_OF_API+'/sendemailphoneotp',formData)
+  }
   verifyEmailOtp(obj:any){
     const formData: any = new FormData();
 
@@ -61,6 +75,9 @@ export class AuthService {
     }
     if (obj.phone) {
       formData.append('phone', obj.phone);
+    }
+    if (obj.otp) {
+      formData.append('otp', obj.otp);
     }
     return this.httpClient.post(this.PATH_OF_API+'/varifyemailphoneotp',formData)
   }

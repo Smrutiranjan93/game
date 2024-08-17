@@ -87,6 +87,25 @@ export class HomeComponent {
   sendOtp() {
     if (this.verifyForm.controls['mobileNumber'].valid) {
       this.setOtp = true;
+      const user_id = JSON.parse(localStorage.getItem('user') || '{}');
+      const { phone } = this.verifyForm.value.mobileNumber;
+console.log(phone)
+console.log( this.verifyForm.value.mobileNumber)
+      const otpData = {
+        user_id: user_id.id,
+        phone:this.verifyForm.value.mobileNumber,
+      };
+      console.log(otpData);
+      this.auth.sendOtp(otpData).subscribe(
+        (response: any) => {
+          console.log('OTP verification successful:', response);
+
+          // this.router.navigate(['/user']);
+        },
+        (error) => {
+          console.error('OTP verification failed:', error);
+        }
+      );
     } else {
       this.verifyForm.controls['mobileNumber'].markAsTouched();
     }
@@ -99,6 +118,19 @@ export class HomeComponent {
       this.verifyForm.value.otp3 +
       this.verifyForm.value.otp4;
     console.log('OTP entered:', otp);
+    console.log(otp);
+    const user_id = JSON.parse(localStorage.getItem('user') || '{}');
+    const { phone } = this.verifyForm.value.mobileNumber;
+
+    const obj = {
+      user_id: user_id.id,
+      phone:this.verifyForm.value.mobileNumber,
+      otp,
+    };
+    console.log(obj);
+    this.auth.verifyEmailOtp(obj).subscribe((res: any) => {
+      alert('verified successfully');
+    });
   }
 
   sendEmailOtp() {
@@ -113,10 +145,10 @@ export class HomeComponent {
       const otpData = {
         user_id: user_id.id,
         email,
-        phone: user_id.phone,
+        // phone: user_id.phone,
       };
       console.log(otpData);
-      this.auth.verifyEmailOtp(otpData).subscribe(
+      this.auth.sendOtp(otpData).subscribe(
         (response: any) => {
           console.log('OTP verification successful:', response);
 
@@ -131,19 +163,29 @@ export class HomeComponent {
 
   validateEmailOtp() {
     const otp = [
-      this.emailVerifyForm.value.emailOtp1,
-      this.emailVerifyForm.value.emailOtp2,
-      this.emailVerifyForm.value.emailOtp3,
-      this.emailVerifyForm.value.emailOtp4,
+      this.otpVerifyForm.value.emailOtp1,
+      this.otpVerifyForm.value.emailOtp2,
+      this.otpVerifyForm.value.emailOtp3,
+      this.otpVerifyForm.value.emailOtp4,
     ].join('');
     console.log(otp);
+    const user_id = JSON.parse(localStorage.getItem('user') || '{}');
+    const { email } = this.emailVerifyForm.value;
+
+    const obj = {
+      user_id: user_id.id,
+      email,
+      otp,
+    };
+    this.auth.verifyEmailOtp(obj).subscribe((res: any) => {
+      alert('verified successfully');
+    });
   }
 
   getPackages() {
     this.auth.getPackages().subscribe((res: any) => {
       console.log(res);
       this.packages = res.result.list;
-
     });
   }
 }
