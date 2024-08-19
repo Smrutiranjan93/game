@@ -79,7 +79,7 @@ export class AuthService {
     if (obj.otp) {
       formData.append('otp', obj.otp);
     }
-    return this.httpClient.post(this.PATH_OF_API+'/varifyemailphoneotp',formData)
+    return this.httpClient.post(this.PATH_OF_API+'/varifyemailphone',formData)
   }
   getPackages(){
     return this.httpClient.post(this.PATH_OF_API+'/packagelist',null)

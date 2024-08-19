@@ -58,6 +58,16 @@ export class HomeComponent {
   }
 
   ngOnInit() {
+    const storedMobileNumber = JSON.parse(
+      localStorage.getItem('user') || '{}'
+    ).phone;
+    if (storedMobileNumber) {
+      this.verifyForm.patchValue({ mobileNumber: storedMobileNumber });
+    }
+    const storedEmail = JSON.parse(localStorage.getItem('user') || '{}').email;
+    if (storedEmail) {
+      this.emailVerifyForm.patchValue({ email: storedEmail });
+    }
     this.getPackages();
   }
   planDetails: {
@@ -89,11 +99,11 @@ export class HomeComponent {
       this.setOtp = true;
       const user_id = JSON.parse(localStorage.getItem('user') || '{}');
       const { phone } = this.verifyForm.value.mobileNumber;
-console.log(phone)
-console.log( this.verifyForm.value.mobileNumber)
+      console.log(phone);
+      console.log(this.verifyForm.value.mobileNumber);
       const otpData = {
         user_id: user_id.id,
-        phone:this.verifyForm.value.mobileNumber,
+        phone: this.verifyForm.value.mobileNumber,
       };
       console.log(otpData);
       this.auth.sendOtp(otpData).subscribe(
@@ -124,7 +134,7 @@ console.log( this.verifyForm.value.mobileNumber)
 
     const obj = {
       user_id: user_id.id,
-      phone:this.verifyForm.value.mobileNumber,
+      phone: this.verifyForm.value.mobileNumber,
       otp,
     };
     console.log(obj);
