@@ -20,7 +20,7 @@ import {
 export class LoginComponent {
   loginForm: FormGroup;
   showPassword = false;
-
+  isLoading = false;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -46,8 +46,9 @@ export class LoginComponent {
   }
   onLogin() {
     if (this.loginForm.valid) {
+      this.isLoading = true;  // Show spinner
       const { identifier, password } = this.loginForm.value;
-
+  
       let loginData: any = { password };
       console.log(identifier);
       console.log(loginData);
@@ -56,15 +57,17 @@ export class LoginComponent {
       } else if (/^[0-9]{10}$/.test(identifier)) {
         loginData.phone = identifier;
       }
-
+  
       this.auth.login(loginData).subscribe(
         (response:any) => {
+          this.isLoading = false;  // Hide spinner
           console.log('Login successful:', response);
           const user = response.result.user;
           localStorage.setItem('user', JSON.stringify(user));
           this.router.navigate(['/user']);
         },
         (error) => {
+          this.isLoading = false;  // Hide spinner
           console.error('Login failed:', error);
         }
       );

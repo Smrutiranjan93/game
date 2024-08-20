@@ -243,3 +243,48 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 1px solid red;
   width: 140px;
 }
+
+@media (max-width: 768px) {
+  .cards {
+    width: 90%;
+    height: auto;
+  }
+  
+  .inputs input {
+    width: 8vw; /* Adjust input size for smaller screens */
+    height: 8vw;
+  }
+
+  .card-2 {
+    width: 100%;
+    left: 10px;
+    bottom: -30px;
+  }
+  
+  .validate {
+    width: 80%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards h6 {
+    font-size: 18px;
+  }
+
+  .inputs input {
+    width: 12vw; /* Further adjust input size */
+    height: 12vw;
+  }
+
+  .card-2 {
+    width: 95%;
+    left: 5px;
+    bottom: -20px;
+  }
+
+  .validate {
+    width: 100%;
+    border-radius: 10px;
+  }
+}
