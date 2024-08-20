@@ -64,6 +64,8 @@ export class LoginComponent {
           console.log('Login successful:', response);
           const user = response.result.user;
           localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('email_varify', response.result.email_varify);
+          localStorage.setItem('phone_varify', response.result.phone_varify);
           this.router.navigate(['/user']);
         },
         (error) => {

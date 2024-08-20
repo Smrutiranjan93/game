@@ -13,12 +13,16 @@ import { AuthService } from '../../services/auth.service';
 })
 export class UserRegisterComponent {
   registrationForm: FormGroup;
+  showPassword = false; 
   constructor(private fb: FormBuilder,private auth:AuthService) {
     this.registrationForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
+    },{
+      validator: this.passwordMatchValidator 
     });
   }
 
@@ -41,5 +45,14 @@ export class UserRegisterComponent {
     } else {
       console.log('Form is not valid');
     }
+  }
+  passwordMatchValidator(form: FormGroup) {
+    const password = form.get('password')?.value;
+    const confirmPassword = form.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { mismatch: true };
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 }

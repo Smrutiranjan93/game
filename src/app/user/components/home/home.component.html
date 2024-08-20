@@ -9,6 +9,7 @@
             class="btn btn-primary rounded"
             data-bs-toggle="modal"
             data-bs-target="#modal-one"
+            *ngIf="!mobileVerify"
             >Verify Mobile</a
           >
           <a
@@ -16,6 +17,7 @@
             class="btn btn-primary rounded mx-2"
             data-bs-toggle="modal"
             data-bs-target="#modal-two"
+            *ngIf="!emailVerify"
             >Verify Email</a
           >
         </div>
