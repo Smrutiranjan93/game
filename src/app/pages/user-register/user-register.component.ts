@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-register',
@@ -14,7 +15,8 @@ import { AuthService } from '../../services/auth.service';
 export class UserRegisterComponent {
   registrationForm: FormGroup;
   showPassword = false; 
-  constructor(private fb: FormBuilder,private auth:AuthService) {
+  isLoading = false;
+  constructor(private fb: FormBuilder,private router: Router,private auth:AuthService,private toastr: ToastrService) {
     this.registrationForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -25,25 +27,26 @@ export class UserRegisterComponent {
       validator: this.passwordMatchValidator 
     });
   }
-
-
   onSubmit() {
     if (this.registrationForm.valid) {
-      const { password, email, phone } = this.registrationForm.value;
-      console.log(this.registrationForm.value)
-      try {
-        this.auth
-          .register(this.registrationForm.value)
-          .subscribe((response) => {
-            console.log('Registration successful', response);
-          }, (error) => {
-            console.error('Registration failed', error);
-          });
-      } catch (error:any) {
-        console.error(error.message);
-      }
+      this.isLoading = true; // Show spinner
+
+      this.auth.register(this.registrationForm.value).subscribe(
+        (response) => {
+          this.isLoading = false; // Hide spinner
+          console.log('Registration successful', response);
+          this.toastr.success('Registration successful', 'Success');
+          this.router.navigate(['/login']);
+        },
+        (error) => {
+          this.isLoading = false; // Hide spinner
+          console.error('Registration failed', error);
+          this.toastr.error('Registration failed', 'Error');
+        }
+      );
     } else {
       console.log('Form is not valid');
+      this.toastr.warning('Please fill out the form correctly', 'Form Invalid');
     }
   }
   passwordMatchValidator(form: FormGroup) {

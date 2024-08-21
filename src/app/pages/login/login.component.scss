@@ -1,25 +1,23 @@
 * {
   margin: 0;
-  padding: 0;
+  overflow: auto;
   box-sizing: border-box;
-  user-select: none;
 }
 .bg-img {
   // background: url("https://images.pexels.com/photos/34088/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-  background: url("https://emeritus.org/in/wp-content/uploads/sites/3/2022/06/business-finance-768x340.jpg.webp");
+  background: url("https://emeritus.org/in/wp-content/uploads/sites/3/2022/06/business-finance-768x340.jpg.webp") no-repeat center center;
   //  background: url("https://pasupatigroup.com/wp-content/themes/pashupati/images/gallery/gallery-10.jpg");
   height: 100vh;
   background-size: cover;
   background-position: center;
+  overflow: auto;
 }
 .bg-img:after {
   position: absolute;
   content: "";
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.1);
 }
 .content {
   position: absolute;

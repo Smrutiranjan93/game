@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -25,7 +25,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit{
   selectedPlan: string | null = null;
   setOtp = false;
   setEmailOtp = false;
@@ -33,8 +33,12 @@ export class HomeComponent {
   emailVerifyForm: FormGroup;
   otpVerifyForm: FormGroup;
   packages: any[] = [];
+  allPackages: any[][] = [];
   mobileVerify:boolean=true;
   emailVerify:boolean=true;
+  @ViewChild('closeButton') closeButton!: ElementRef;
+  @ViewChild('closeEmailButton') closeEmailButton!: ElementRef;
+  planDetails:any;
   constructor(
     private fb: FormBuilder,
     private route: Router,
@@ -62,7 +66,7 @@ export class HomeComponent {
     });
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     const storedMobileNumber = JSON.parse(
       localStorage.getItem('user') || '{}'
     ).phone;
@@ -79,27 +83,9 @@ export class HomeComponent {
     this.mobileVerify = storedMobileVerifyNumber;
     this.emailVerify = storedEmailVerifyNumber;
     console.log(this.mobileVerify);
-    
+    this.getPackages();
   }
-  planDetails: {
-    [key: string]: Array<{ feature: string; description: string }>;
-  } = {
-    freelance: [
-      { feature: 'Space', description: '1 GB of space' },
-      { feature: 'Support', description: 'Support at $25/hour' },
-      { feature: 'Cloud Access', description: 'Limited cloud access' },
-    ],
-    business: [
-      { feature: 'Space', description: '5 GB of space' },
-      { feature: 'Support', description: 'Support at $5/hour' },
-      { feature: 'Cloud Access', description: 'Full cloud access' },
-    ],
-    enterprise: [
-      { feature: 'Space', description: '10 GB of space' },
-      { feature: 'Support', description: 'Support at $5/hour' },
-      { feature: 'Cloud Access', description: 'Full cloud access' },
-    ],
-  };
+ 
 
   selectPlan(plan: string): void {
     this.selectedPlan = plan;
@@ -131,28 +117,6 @@ export class HomeComponent {
       this.verifyForm.controls['mobileNumber'].markAsTouched();
     }
   }
-
-  // validateOtp() {
-  //   const otp =
-  //     this.verifyForm.value.otp1 +
-  //     this.verifyForm.value.otp2 +
-  //     this.verifyForm.value.otp3 +
-  //     this.verifyForm.value.otp4;
-  //   console.log('OTP entered:', otp);
-  //   console.log(otp);
-  //   const user_id = JSON.parse(localStorage.getItem('user') || '{}');
-  //   const { phone } = this.verifyForm.value.mobileNumber;
-
-  //   const obj = {
-  //     user_id: user_id.id,
-  //     phone: this.verifyForm.value.mobileNumber,
-  //     otp,
-  //   };
-  //   console.log(obj);
-  //   this.auth.verifyEmailOtp(obj).subscribe((res: any) => {
-  //     alert('verified successfully');
-  //   });
-  // }
   validateOtp() {
     const otp =
       this.verifyForm.value.otp1 +
@@ -160,7 +124,7 @@ export class HomeComponent {
       this.verifyForm.value.otp3 +
       this.verifyForm.value.otp4;
     console.log('OTP entered:', otp);
-    console.log(otp);
+
     const user_id = JSON.parse(localStorage.getItem('user') || '{}');
     const obj = {
       user_id: user_id.id,
@@ -168,16 +132,15 @@ export class HomeComponent {
       otp,
     };
     console.log(obj);
+
     this.auth.verifyEmailOtp(obj).subscribe(
       (res: any) => {
-        if(res){
-          localStorage.setItem('email_varify', res.email_varify);
+        this.closeModal();
 
-        }
-        this.toastr.success('Mobile Verified successfully');
+        this.toastr.success('Mobile Verified successfully !', 'Success');
       },
-      (error: any) => {
-        this.toastr.error('Mobile Verification failed');
+      (error) => {
+        this.toastr.error('Mobile Verification failed !', 'Error');
       }
     );
   }
@@ -199,8 +162,6 @@ export class HomeComponent {
       this.auth.sendOtp(otpData).subscribe(
         (response: any) => {
           console.log('OTP verification successful:', response);
-
-          // this.router.navigate(['/user']);
         },
         (error) => {
           console.error('OTP verification failed:', error);
@@ -208,27 +169,6 @@ export class HomeComponent {
       );
     }
   }
-
-  // validateEmailOtp() {
-  //   const otp = [
-  //     this.otpVerifyForm.value.emailOtp1,
-  //     this.otpVerifyForm.value.emailOtp2,
-  //     this.otpVerifyForm.value.emailOtp3,
-  //     this.otpVerifyForm.value.emailOtp4,
-  //   ].join('');
-  //   console.log(otp);
-  //   const user_id = JSON.parse(localStorage.getItem('user') || '{}');
-  //   const { email } = this.emailVerifyForm.value;
-
-  //   const obj = {
-  //     user_id: user_id.id,
-  //     email,
-  //     otp,
-  //   };
-  //   this.auth.verifyEmailOtp(obj).subscribe((res: any) => {
-  //     alert('verified successfully');
-  //   });
-  // }
   validateEmailOtp() {
     const otp = [
       this.otpVerifyForm.value.emailOtp1,
@@ -249,17 +189,30 @@ export class HomeComponent {
 
     this.auth.verifyEmailOtp(obj).subscribe(
       (res: any) => {
-        this.toastr.success('Email Verified successfully', 'Success');
+        this.closeModal();
+        this.toastr.success('Email Verified successfully !', 'Success');
       },
       (error: any) => {
-        this.toastr.error('Email Verification failed', 'Error');
+        this.toastr.error('Email Verification failed !', 'Error');
       }
     );
   }
-  getPackages() {
+  closeModal() {
+    this.closeButton.nativeElement.click(); 
+    this.closeEmailButton.nativeElement.click(); 
+  }
+  getPackages(): void {
     this.auth.getPackages().subscribe((res: any) => {
-      console.log(res);
       this.packages = res.result.list;
+      this.allPackages = this.chunkArray(this.packages, 3);
     });
+  }
+
+  chunkArray(array: any[], size: number): any[][] {
+    const results = [];
+    for (let i = 0; i < array.length; i += size) {
+      results.push(array.slice(i, i + size));
+    }
+    return results;
   }
 }

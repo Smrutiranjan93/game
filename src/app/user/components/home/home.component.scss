@@ -21,7 +21,9 @@
   -webkit-flex: 0 1 330px;
   flex: 0 1 330px;
 }
-
+.carousel-item .pricing-item:not(.middle-card) {
+  margin: 40px 10px; 
+}
 .pricing-action {
   color: inherit;
   border: none;
@@ -37,6 +39,10 @@
   text-align: left;
 }
 
+.pricing-card {
+  display: flex;
+  justify-content: center;
+}
 .pricing-card .pricing-item {
   font-family: "Open Sans", sans-serif;
   cursor: default;
@@ -286,5 +292,33 @@ input[type="number"]::-webkit-outer-spin-button {
   .validate {
     width: 100%;
     border-radius: 10px;
+  }
+}
+
+
+.position-relative {
+  position: relative;
+}
+
+.notification-dot {
+  position: absolute;
+  top: -5px; /* Adjust position as needed */
+  right: -5px; /* Adjust position as needed */
+  width: 10px; /* Size of the dot */
+  height: 10px; /* Size of the dot */
+  background-color: red; /* Dot color */
+  border-radius: 50%; /* Make it a circle */
+  animation: blink 1s infinite; /* Apply blinking animation */
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
