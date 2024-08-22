@@ -1,10 +1,12 @@
-<div class="bg-img">
-  <div class="content">
-    <header>Register</header>
-    <div class="login-container">
+<div class="container-fluid bg-img d-flex align-items-center justify-content-center min-vh-100">
+  <div class="card content text-center">
+    <div class="">
+      <h2>Register</h2>
+    </div>
+    <div class="card-body">
       <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 mb-3">
             <div class="form-group">
               <label class="form-label fw-bold">Name</label>
               <input
@@ -25,7 +27,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 mb-3">
             <div class="form-group">
               <label class="form-label fw-bold">Enter Phone No.</label>
               <input
@@ -45,7 +47,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 mb-3">
             <div class="form-group">
               <label class="form-label fw-bold">Email</label>
               <input
@@ -65,7 +67,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 mb-3">
             <div class="form-group">
               <label class="form-label fw-bold">Password</label>
               <div class="input-group">
@@ -97,7 +99,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 mb-3">
             <div class="form-group">
               <label class="form-label fw-bold">Confirm Password</label>
               <div class="input-group">

@@ -1,35 +1,37 @@
-<div class="bg-img">
-  <div class="content">
-    <header>Login</header>
-    <div class="login-container">
+<div class="container-fluid bg-img d-flex align-items-center justify-content-center min-vh-100">
+  <div class="card content text-center">
+    <div class="">
+      <h2>Login</h2>
+    </div>
+    <div class="card-body">
       <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-        <div class="field">
-          <span ><i class="bi bi-person"></i></span>
+        <div class="mb-3 input-group">
+          <span class="input-group-text"><i class="bi bi-person"></i></span>
           <input
             formControlName="identifier"
             type="text"
-            required
+            class="form-control"
             placeholder="Email or Phone"
-          />
-        </div>
-        <div class="field space">
-          <span ><i class="bi bi-lock-fill"></i></span>
-          <input
-          [type]="showPassword ? 'text' : 'password'"
-            formControlName="password"
-            type="password"
-            class="pass-key"
             required
-            placeholder="Password"
           />
-          <span class="show" (click)="togglePasswordVisibility()">SHOW</span>
         </div>
-        <div class="pass">
-          <a (click)="forgotPassword()">Forgot Password?</a>
+        <div class="mb-3 input-group">
+          <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password"
+            class="form-control"
+            placeholder="Password"
+            required
+          />
+          <span class="input-group-text show" (click)="togglePasswordVisibility()">SHOW</span>
         </div>
-      
-        <div class="field">
-          <input type="submit" value="LOGIN" />
+       
+        <div>
+          <button type="submit" class="btn btn-primary w-100">LOGIN</button>
+        </div>
+        <div class="mb-2 mt-2 text-end">
+          <a (click)="forgotPassword()" class="text-decoration-none">Forgot Password?</a>
         </div>
       </form>
       <div *ngIf="isLoading" class="fullscreen-spinner">
@@ -38,11 +40,10 @@
         </div>
       </div>
     </div>
-    
-    
-    <div class="signup">
-      Don't have an account?
-      <a routerLink="/register">Signup Now</a>
+    <div class="">
+      <div class="signup">
+        Don't have an account? <a routerLink="/register" class="text-decoration-none">Signup Now</a>
+      </div>
     </div>
   </div>
 </div>

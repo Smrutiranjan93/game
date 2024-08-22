@@ -1,57 +1,23 @@
-* {
-    margin: 0;
-    box-sizing: border-box;
-    overflow: auto;
-}
-
-html, body {
-    height: 100%;
-    overflow: auto; /* Prevents body from scrolling */
-}
 
 .bg-img {
     background: url("https://emeritus.org/in/wp-content/uploads/sites/3/2022/06/business-finance-768x340.jpg.webp") no-repeat center center;
-    min-height: 100vh; /* Ensures background covers full height */
     background-size: cover;
-    position: relative;
-    overflow: auto;
-}
+  }
 
-.bg-img:after {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-
-.content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 999;
-    text-align: center;
-    padding: 60px 32px;
-    width: 100%;
-    max-width: 600px;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.46);
+  .content {
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(4px);
-    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
-}
-
-.content header {
-    color: white;
-    font-size: 33px;
-    font-weight: 600;
-    margin: 0 0 35px 0;
-    font-family: "Montserrat", sans-serif;
-}
-
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 700px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+  }
 .form-group {
     text-align: left;
     color: black;
     font-size: 15px;
+    line-height: 1rem;
 }
 
 .fullscreen-spinner {
@@ -73,18 +39,4 @@ html, body {
     color: #fff;
 }
 
-@media (max-width: 768px) {
-    .content {
-        padding: 30px 20px;
-        max-width: 90%; /* Adjust width for smaller screens */
-    }
 
-    .content header {
-        font-size: 24px;
-        margin: 0 0 20px 0;
-    }
-
-    .form-group {
-        font-size: 14px;
-    }
-}
