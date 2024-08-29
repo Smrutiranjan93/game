@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } 
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-
+declare var bootstrap: any;
 @Component({
   selector: 'app-user-register',
   standalone: true,
@@ -57,5 +57,12 @@ export class UserRegisterComponent {
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
+  }
+  openModal() {
+    const modalElement = document.getElementById('termsModal');
+    if (modalElement) {
+      const modal = new bootstrap.Modal(modalElement);
+      modal.show();
+    }
   }
 }

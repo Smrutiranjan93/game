@@ -132,7 +132,17 @@
             </div>
           </div>
         </div>
-
+        <div class="row">
+          <div class="col-md-7">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox"  (click)="openModal()" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault"  style="margin-left: -4rem;">
+                I have read and agree to the Terms
+              </label>
+            </div>
+          </div>
+        </div>
+      
         <div class="mt-3 text-end">
           <div class="btn-group">
             <button
@@ -146,6 +156,7 @@
           </div>
         </div>
       </form>
+     
       <div *ngIf="isLoading" class="d-flex justify-content-center fullscreen-spinner">
         <div class="spinner-border" role="status">
           <span class="visually-hidden">Loading...</span>
@@ -156,6 +167,91 @@
     <div class="signup">
       <span class="text-dark">Already have an Account ?</span>
       <a routerLink="/login" class="text-primary fw-bold">Login Now</a>
+    </div>
+  </div>
+  <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Terms content goes here -->
+          <h1>Terms and Conditions</h1>
+
+          <p>METAPHOR NETWORKS PRIVATE LIMITED, a company incorporated under the Companies Act, 1956, and having its Registered Office in Odisha, Bhubaneswar, hereinafter referred to as "the Company" or "MNPL.WORLD" or "we" whichever is appropriate. The Company is inter-alia into the business of Ecommerce of various products and services such as Electronics, FMCG, Health Products, etc. The Company exclusively uses its website to display the details of the products, marketing methods, and business monitoring while using word-of-mouth publicity to promote and create awareness about the company and its products.</p>
+      
+          <p>The Company does appoint freelance Independent Distributors across the country for the marketing and sale of products. Interested individuals/body corporates can order the products upon being satisfied with the quality and services. They can become a freelance Independent Distributor (hereinafter referred to as "Distributor") of the company if they wish by applying for the same in the prescribed form and thereby accepting the Terms and Conditions mentioned. MNPL.WORLD doesn’t collect any Registration Charges and it is FREE AND EASY to get enrolled as a Customer/Registered Distributor.</p>
+      
+          <p>Before filling the application form, the intending Distributor is advised to go through the terms and conditions mentioned herein below thoroughly along with those mentioned on the official website of the company during the placement of an online order, and subject to such terms and conditions, shall by way of marking a tick in the column provided as a token of their acceptance of the terms and conditions mentioned therein.</p>
+      
+          <h2>I. Definitions</h2>
+          <p>The following words used in these presents shall have the meaning as defined hereunder:</p>
+          <ul>
+              <li><strong>a. Company –</strong> Means METAPHOR NETWORKS Private Limited.</li>
+              <li><strong>b. Consumer –</strong> Consumer means and includes individuals/body corporates who purchase products from the Company.</li>
+              <li><strong>c. Independent Distributor –</strong> Independent Distributor is the individual person/body corporate (including Company/Partnership firm, proprietary concern) who is competent to enter into a contract as per the Indian Contract Act provided, such an interested person has purchased products from the Company and opted to Participate in Business opportunity.</li>
+              <li><strong>d. He –</strong> Shall mean and include male, female, and body corporate, partnership firm who applies for the Distributorship of the Company.</li>
+              <li><strong>e. Product –</strong> Shall mean and include all the products marketed by the Company from time to time.</li>
+              <li><strong>f. Manufacturer –</strong> Means and includes Manufacturers of the products marketed and sold by the Company from time to time.</li>
+              <li><strong>g. MRP –</strong> Means and includes Maximum Retail Price printed over the price tag appended to the products.</li>
+              <li><strong>h. Facilitation Fee –</strong> Facilitation Fee is the amount/income an Independent Distributor may earn by marketing/referring to the products of the Company.</li>
+              <li><strong>j. Unique ID –</strong> Means a unique identification number issued by the Company to the Consumer/Independent Distributor and is issued to the Independent Distributor as a token of acceptance of his application seeking distributorship for the products of the Company.</li>
+              <li><strong>k. Password –</strong> Password means a unique code allotted to each Consumer/Independent Distributor to allow them to log on to the website of the Company.</li>
+              <li><strong>l. Website –</strong> Means the website of the Company www.mnpl.world, www.metaphornetworks.com, or any official website (including through a mobile app) communicated through official communication channels of the company.</li>
+          </ul>
+      
+          <h2>II. THE APPOINTMENT AND UNDERSTANDING</h2>
+          <p>The Company upon scrutiny and verification of the Application may consider the Applicant as an "Independent Distributor" for the products marketed by the Company. Independent Distributor shall enjoy the following privileges after such recognition:</p>
+          <ul>
+              <li>No territorial restriction to market the products but limited to India.</li>
+              <li>Company shall maintain the sales account of the Independent Distributor and shall be made available for viewing through their website.</li>
+              <li>A Unique ID and password shall be awarded to facilitate viewing of their respective business account.</li>
+              <li>There shall be no specific targets; however, earnings shall be in proportion to the volume of sales made by the Independent Distributor by self or through a team as stipulated.</li>
+              <li>Distributorship may be awarded as a privileged consumer with no deposit, but subject to accepting terms and other conditions.</li>
+              <li>Distributorship is awarded without any commitment or promise from the company in terms of possible earning potential.</li>
+          </ul>
+      
+          <p>The Independent Distributor, upon appending by marking tick wherever asking to read the Terms and Conditions and to confirm, and upon confirming through the online company's official website, shall be deemed to have accepted the Distributorship as an independent distributor and hereby covenants as under:</p>
+          <ul>
+              <li>That he has clearly understood the Business Opportunity, marketing program, the compensation plan, its limitations, and conditions, and he is not relying upon any representation or promises that are not set out in these terms and conditions or other officially printed or published materials of the company.</li>
+              <li>Shall act as an independent body and shall not commit any misfeasance or malfeasance to create any liability/obligation over the company of whatsoever nature.</li>
+              <li>An Independent Distributor is not an Agent/Employee or any other Legal representative of the company or its service providers.</li>
+              <li>He has attained the age of majority and is competent to enter a contract as provided in the "INDIAN CONTRACT ACT". Necessary proof thereof shall be submitted as and when required by the Company.</li>
+              <li>The Independent Distributor hereby undertakes not to accept cash from any new consumer introduced by him for buying the products and discourages his team members from accepting cash from any buyers or from other Distributors.</li>
+          </ul>
+      
+          <h2>III. GENERAL TERMS</h2>
+          <ul>
+              <li>The company under no circumstances will accept payment in cash for product Sales.</li>
+              <li>The company may appoint any Third Party for Collection/distribution services. The Independent Distributor is required to visit the company's official website from time to time to know such an appointment and avail of facilities such as walking into their outlets and making Payment and collecting a valid receipt and products from them.</li>
+              <li>The Products can be ordered online through our website and the payment in the form of demand draft favoring "METAPHOR NETWORKS PRIVATE LIMITED", Payable at BHUBANESWAR, must be sent/submitted at our authorized outlets, against which the product/s ordered will be delivered to the purchaser/authorized person. If the payment has been done through Credit Card/Debit Card using the payment gateway process or through Terminal Swiping machine, the same or the front side photocopy of the same must be presented with the ID proof, at the time of product delivery, by the purchaser either while collecting the product from the delivery outlet or while the product is getting delivered at the purchaser’s delivery address. The Product can also be purchased through E-Wallet.</li>
+              <li>All consumers/Independent Distributors before ordering online or making the payment are advised to physically look and feel the products that are available for demo/display at our locations, as such the images shown on the company’s website/printed materials or through, any other mode by the company are only for reference and the actual product may vary.</li>
+              <li>Neither it is compulsory nor mandatory to participate in the business plan of MNPL.WORLD and Purchasers who wish not to join the business can opt to do so by checking the "Free & Optional Business option" box during the registration process. You will, however, need to provide the direct/enroller details (without which products can't be purchased as such Company takes every possible step to make the purchaser understand about the company, products, policies, etc., and also to ensure that the purchaser is properly guided to buy MNPL.WORLD products or before entering into MNPL.WORLD Business Opportunity) and such a purchaser will be termed as "Consumer".</li>
+          </ul>
+      
+          <!-- Continue formatting the remaining sections similarly -->
+      
+          <h2>X. RECOURSE AND LEGAL APPLICABILITY</h2>
+          <p>The terms and conditions stipulated in the foregoing paragraphs shall be governed in accordance with the laws in force in India. Disputes, if any, shall be subject to the exclusive jurisdiction of the courts in Bhubaneswar.</p>
+          <p>If any dispute or difference arising out of or in relation to these presents, the same shall be referred to a sole arbitrator appointed by the Company. Arbitration in such an event shall be conducted as per the "Arbitration and Conciliation Act, 1996" as amended from time to time. The venue of such Arbitration shall be Bhubaneswar and the Language shall be English.</p>
+      
+          <h2>Declaration/Affirmation</h2>
+          <ul>
+              <li>That I have read and understood the terms and conditions for ‘Independent Distributorship " of the Company.</li>
+              <li>I have also gone through the company official website, printed materials, brochures and convinced about the business and I have applied for the Distributorship on my own volition.</li>
+              <li>I declare that I have not been given any assurance or promise by the company or by its distributors as to any income on account of the product purchase made by me. However, I am made to understand that I will be eligible for income/facilitation fees depending upon the volume of business done by me, as per the terms and the Company reserves the right to change the Business Plan at any point in time.</li>
+              <li>I undertake not to misguide or induce anyone. I shall not misguide anyone and appraise them of the terms and conditions for anyone to become a distributor to join the company.</li>
+              <li>I hereby agree and adhere to the terms and conditions as stipulated along with the application form and as mentioned above to agree to purchase the product as Consumer/to do the distributorship business.</li>
+              <li>I hereby agree to submit all disputes to arbitration as provided in the terms and conditions of the company.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Agree</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

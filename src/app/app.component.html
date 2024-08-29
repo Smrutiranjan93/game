@@ -1,7 +1,5 @@
+<app-header *ngIf="!shouldHideHeaderFooter()"></app-header>
+
 <router-outlet></router-outlet>
 
-  
- 
-  
-  
-  
+<app-footer *ngIf="!shouldHideHeaderFooter()"></app-footer>
