@@ -2,7 +2,9 @@
   background: url("https://emeritus.org/in/wp-content/uploads/sites/3/2022/06/business-finance-768x340.jpg.webp") no-repeat center center;
   background-size: cover;
 }
-
+*{
+  font-family: 'bootstrap-icons';
+}
 .content {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(4px);
