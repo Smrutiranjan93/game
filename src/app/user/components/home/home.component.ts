@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -43,7 +43,7 @@ export class HomeComponent implements AfterViewInit{
     private fb: FormBuilder,
     private route: Router,
     private auth: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService, private cdRef: ChangeDetectorRef
   ) {
     this.verifyForm = this.fb.group({
       mobileNumber: [
@@ -84,6 +84,7 @@ export class HomeComponent implements AfterViewInit{
     this.emailVerify = storedEmailVerifyNumber;
     console.log(this.mobileVerify);
     this.getPackages();
+    this.cdRef.detectChanges();
   }
  
 

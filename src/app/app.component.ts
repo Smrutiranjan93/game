@@ -17,7 +17,7 @@ export class AppComponent {
   constructor(private router: Router) {}
   shouldHideHeaderFooter(): boolean {
     const currentRoute = this.router.url;
-    return currentRoute === '/login' || currentRoute === '/register';
+    return currentRoute === '/login' || currentRoute === '/register'||  currentRoute.startsWith('/user');;
   }
 
  
