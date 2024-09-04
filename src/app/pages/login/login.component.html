@@ -1,7 +1,7 @@
 <div class="container-fluid bg-img d-flex align-items-center justify-content-center min-vh-100">
   <div class="card content text-center">
     <div class="">
-      <h2>Login</h2>
+      <h2 class="text-primary fw-bold">Login</h2>
     </div>
     <div class="card-body">
       <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
@@ -24,7 +24,16 @@
             placeholder="Password"
             required
           />
-          <span class="input-group-text show" (click)="togglePasswordVisibility()">SHOW</span>
+          <span
+          class="input-group-text"
+          (click)="togglePasswordVisibility()"
+          style="cursor: pointer"
+        >
+          <i
+            class="fa"
+            [ngClass]="showPassword ? 'bi bi-eye' : 'bi bi-eye-slash'"
+          ></i>
+        </span>
         </div>
        
         <div>

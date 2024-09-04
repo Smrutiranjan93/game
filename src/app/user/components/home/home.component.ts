@@ -38,6 +38,7 @@ export class HomeComponent implements AfterViewInit{
   emailVerify:boolean=true;
   @ViewChild('closeButton') closeButton!: ElementRef;
   @ViewChild('closeEmailButton') closeEmailButton!: ElementRef;
+  
   planDetails:any;
   constructor(
     private fb: FormBuilder,
@@ -65,12 +66,15 @@ export class HomeComponent implements AfterViewInit{
       emailOtp4: ['', [Validators.required, Validators.maxLength(1)]],
     });
   }
-
+  getMaskedMobileNumber(mobileNumber: string): string {
+    return mobileNumber.replace(/^(\d{3})\d{4}(\d{3})$/, '*******$2');
+  }
   ngAfterViewInit() {
     const storedMobileNumber = JSON.parse(
       localStorage.getItem('user') || '{}'
     ).phone;
     if (storedMobileNumber) {
+      // const maskedNumber = this.getMaskedMobileNumber(storedMobileNumber);
       this.verifyForm.patchValue({ mobileNumber: storedMobileNumber });
     }
     const storedEmail = JSON.parse(localStorage.getItem('user') || '{}').email;

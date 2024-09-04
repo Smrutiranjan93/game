@@ -67,7 +67,7 @@
                       type="text"
                       id="mobileNumber"
                       class="form-control form-control-sm"
-                      formControlName="mobileNumber"
+                      formControlName="mobileNumber"readonly
                     />
                     <div
                       *ngIf="
@@ -102,7 +102,7 @@
                   </h6>
                   <div>
                     <span>A code has been sent to</span>
-                    <small>*******9897</small>
+                    <small>{{ getMaskedMobileNumber(verifyForm.get('mobileNumber')?.value) }}</small>
                   </div>
                   <form [formGroup]="verifyForm" (ngSubmit)="validateOtp()">
                     <div
@@ -200,7 +200,7 @@
                       type="email"
                       id="email"
                       class="form-control form-control-sm"
-                      formControlName="email"
+                      formControlName="email" readonly
                     />
                     <div
                       *ngIf="
