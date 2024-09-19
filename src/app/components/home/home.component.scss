@@ -1,0 +1,16 @@
+.carousel-controls-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-right: 20px; /* Adjust as necessary */
+  margin-bottom: 20px; /* Adjust as necessary */
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100%;
+}
