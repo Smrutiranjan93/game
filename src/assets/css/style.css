@@ -120,12 +120,14 @@ h6 {
 #header {
   transition: all 0.5s;
   z-index: 997;
-  background: rgba(0, 0, 0, 0.9);
+  background: #122158;
+  /* background: rgb(8 77 19 / 83%); */
   height: 80px;
 }
 
 #header.header-transparent {
-  background: rgba(0, 0, 0, 0.9);
+  background: #122158;
+  /* background: rgb(8 77 19 / 83%); */
 }
 
 #header.header-scrolled {
@@ -189,7 +191,7 @@ h6 {
 .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
-.navbar li:hover>a {
+.navbar li:hover > a {
   color: #18d26e;
 }
 
@@ -225,11 +227,11 @@ h6 {
 
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover>a {
+.navbar .dropdown ul li:hover > a {
   color: #18d26e;
 }
 
-.navbar .dropdown:hover>ul {
+.navbar .dropdown:hover > ul {
   opacity: 1;
   top: 100%;
   visibility: visible;
@@ -241,7 +243,7 @@ h6 {
   visibility: hidden;
 }
 
-.navbar .dropdown .dropdown:hover>ul {
+.navbar .dropdown .dropdown:hover > ul {
   opacity: 1;
   top: 0;
   left: 100%;
@@ -318,7 +320,7 @@ h6 {
 
 .navbar-mobile a:hover,
 .navbar-mobile .active,
-.navbar-mobile li:hover>a {
+.navbar-mobile li:hover > a {
   color: #18d26e;
 }
 
@@ -348,11 +350,11 @@ h6 {
 
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover>a {
+.navbar-mobile .dropdown ul li:hover > a {
   color: #18d26e;
 }
 
-.navbar-mobile .dropdown>.dropdown-active {
+.navbar-mobile .dropdown > .dropdown-active {
   display: block;
 }
 
@@ -371,7 +373,6 @@ h6 {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-
 
 #hero {
   width: 100%;
@@ -406,7 +407,8 @@ h6 {
 
 #hero .carousel-item::before {
   content: "";
-  background-color: rgba(0, 0, 0, 0.7);
+  /* background-color: rgba(0, 0, 0, 0.7); */
+  /* background-color:rgb(13 220 253 / 35%); */
 }
 
 #hero .carousel-container {
@@ -454,19 +456,19 @@ h6 {
 }
 
 #hero .carousel-fade .carousel-inner .carousel-item {
-  transition-property: opacity;
+  /* transition-property: opacity; */
 }
 
 #hero .carousel-fade .carousel-inner .carousel-item,
 #hero .carousel-fade .carousel-inner .active.carousel-item-start,
 #hero .carousel-fade .carousel-inner .active.carousel-item-end {
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 #hero .carousel-fade .carousel-inner .active,
 #hero .carousel-fade .carousel-inner .carousel-item-next.carousel-item-start,
 #hero .carousel-fade .carousel-inner .carousel-item-prev.carousel-item-end {
-  opacity: 1;
+  /* opacity: 1; */
   transition: 0.5s;
 }
 
@@ -599,11 +601,11 @@ section {
   font-size: 14px;
 }
 
-.breadcrumbs ol li+li {
+.breadcrumbs ol li + li {
   padding-left: 10px;
 }
 
-.breadcrumbs ol li+li::before {
+.breadcrumbs ol li + li::before {
   display: inline-block;
   padding-right: 10px;
   color: #6c757d;
@@ -627,7 +629,13 @@ section {
 /* Featured Services Section
 --------------------------------*/
 #featured-services {
-  background: #000;
+  /* background: #000; */
+  background-image: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    #0AA2A3 40%,
+    #122158 100%
+  );
 }
 
 #featured-services .box {
@@ -635,11 +643,17 @@ section {
 }
 
 #featured-services .box-bg {
-  background-image: linear-gradient(0deg, #000000 0%, #242323 50%, #000000 100%);
+  /* background-image: linear-gradient(0deg, #000000 0%, #242323 50%, #000000 100%); */
+  background-image: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    #0AA2A3 40%,
+    #122158 100%
+  );
 }
 
 #featured-services i {
-  color: #18d26e;
+  color: #122158;
   font-size: 48px;
   display: inline-block;
   line-height: 1;
@@ -656,7 +670,7 @@ section {
 }
 
 #featured-services h4 a:hover {
-  color: #18d26e;
+  color: #122158;
 }
 
 #featured-services p {
@@ -712,7 +726,7 @@ section {
   text-align: center;
   position: absolute;
   background-color: #18d26e;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   border: 4px solid #fff;
   left: calc(50% - 32px);
   bottom: -30px;
@@ -810,7 +824,8 @@ section {
 /* Call To Action Section
 --------------------------------*/
 #call-to-action {
-  background: linear-gradient(rgba(0, 142, 99, 0.1), rgba(0, 0, 0, 0.1)), url(../img/bg.jpg) fixed center center;
+  background: linear-gradient(rgba(0, 142, 99, 0.1), rgba(0, 0, 0, 0.1)),
+    url(../img/bg.jpg) fixed center center;
   background-size: cover;
   padding: 60px 0;
 }
@@ -1047,8 +1062,9 @@ section {
   background: #fff;
   text-align: center;
   padding: 30px;
-  height: 90px;
+  /* height: 90px; */
   border-radius: 0 0 3px 3px;
+  margin-bottom: 14px;
 }
 
 #portfolio .portfolio-item .portfolio-info h4 {
@@ -1092,7 +1108,10 @@ section {
   position: relative;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+.portfolio-details
+  .portfolio-details-slider
+  .swiper-pagination
+  .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
   background-color: #fff;
@@ -1100,7 +1119,10 @@ section {
   border: 1px solid #18d26e;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+.portfolio-details
+  .portfolio-details-slider
+  .swiper-pagination
+  .swiper-pagination-bullet-active {
   background-color: #18d26e;
 }
 
@@ -1123,7 +1145,7 @@ section {
   font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li+li {
+.portfolio-details .portfolio-info ul li + li {
   margin-top: 10px;
 }
 
@@ -1196,7 +1218,6 @@ section {
     height: 80px;
   }
 }
-
 
 /* Testimonials Section
 --------------------------------*/
@@ -1402,7 +1423,6 @@ section {
 }
 
 @media (min-width: 768px) {
-
   #contact .contact-address,
   #contact .contact-phone,
   #contact .contact-email {
@@ -1432,7 +1452,7 @@ section {
   font-weight: 600;
 }
 
-#contact .php-email-form .error-message br+br {
+#contact .php-email-form .error-message br + br {
   margin-top: 25px;
 }
 
@@ -1481,7 +1501,7 @@ section {
   background-color: #18d26e;
 }
 
-#contact .php-email-form button[type=submit] {
+#contact .php-email-form button[type="submit"] {
   background: #18d26e;
   border: 0;
   padding: 10px 30px;
@@ -1490,7 +1510,7 @@ section {
   cursor: pointer;
 }
 
-#contact .php-email-form button[type=submit]:hover {
+#contact .php-email-form button[type="submit"]:hover {
   background: #13a456;
 }
 
@@ -1503,7 +1523,6 @@ section {
     transform: rotate(360deg);
   }
 }
-
 
 /*--------------------------------------------------------------
 # Footer
@@ -1640,13 +1659,13 @@ section {
   margin-bottom: 30px;
 }
 
-#footer .footer-top .footer-newsletter input[type=email] {
+#footer .footer-top .footer-newsletter input[type="email"] {
   border: 0;
   padding: 6px 8px;
   width: 65%;
 }
 
-#footer .footer-top .footer-newsletter input[type=submit] {
+#footer .footer-top .footer-newsletter input[type="submit"] {
   background: #18d26e;
   border: 0;
   width: 35%;
@@ -1657,7 +1676,7 @@ section {
   cursor: pointer;
 }
 
-#footer .footer-top .footer-newsletter input[type=submit]:hover {
+#footer .footer-top .footer-newsletter input[type="submit"]:hover {
   background: #13a456;
 }
 
@@ -1673,40 +1692,39 @@ section {
 }
 
 /* pages css */
-.about-section{
+.about-section {
   position: relative;
   padding: 120px 0 70px;
-  }
-  
-  .about-section .image-column .inner-column{
+}
+
+.about-section .image-column .inner-column {
   position: relative;
   padding-left: 80px;
   padding-bottom: 0px;
-  }
-  
-  .about-section .image-column .inner-column:before{
-    content: "";
-    position: absolute;
-    width: calc(50% + 80px);
-    height: calc(100% + 138px);
-    top: -70px;
-    left: -3px;
-    background: transparent;
-    z-index: 0;
-    border: 44px solid #13a456;
-  }
-  
-  .about-section .image-column .image-1{
+}
+
+.about-section .image-column .inner-column:before {
+  content: "";
+  position: absolute;
+  width: calc(50% + 80px);
+  height: calc(100% + 138px);
+  top: -70px;
+  left: -3px;
+  background: transparent;
+  z-index: 0;
+  border: 44px solid #13a456;
+}
+
+.about-section .image-column .image-1 {
   position: relative;
-  }
-  
-  
-  .about-section .image-column .image-1 img{
-  box-shadow: 0 30px 50px rgba(8,13,62,.15);
+}
+
+.about-section .image-column .image-1 img {
+  box-shadow: 0 30px 50px rgba(8, 13, 62, 0.15);
   border-radius: 46px;
-  border:4px solid #13a456;
-  }
-  @media (max-width: 1199px) {
+  border: 4px solid #13a456;
+}
+@media (max-width: 1199px) {
   .about-section {
     padding: 90px 0 50px;
   }
