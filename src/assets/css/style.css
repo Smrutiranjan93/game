@@ -120,13 +120,15 @@ h6 {
 #header {
   transition: all 0.5s;
   z-index: 997;
-  background: #122158;
+  background: #4A74AC;
+  /* background: #122158; */
   /* background: rgb(8 77 19 / 83%); */
   height: 80px;
 }
 
 #header.header-transparent {
-  background: #122158;
+  background: #4A74AC;
+  /* background: #122158; */
   /* background: rgb(8 77 19 / 83%); */
 }
 
